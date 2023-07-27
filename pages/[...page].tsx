@@ -12,7 +12,7 @@ import { Toaster } from "@/components/ui/toaster"
 
 
 // Replace with your Public API Key
-builder.init("d284f13a03ea4780b2c5740b22601cac");
+builder.init("cf634eb9d6274cdb8d10d893067bd248");
 
 // Define a function that fetches the Builder
 // content for a given page
@@ -721,6 +721,24 @@ Builder.registerComponent(
   {
     name: 'Object Example',
     inputs: [{ name: 'object', type: 'object' }],
+  }
+);
+
+
+
+// Children Change -------------------
+Builder.registerComponent(
+  dynamic(() => import('../elements/children_test')),
+  {
+    name: 'Children Example',
+    inputs: [{ name: 'title', type: 'string' }, { name: 'description', type: 'string' }],
+    // Adding defaults is important for easy usability
+    defaultChildren: [
+      { 
+        '@type': '@builder.io/sdk:Element',
+        component: { name: 'Email Form', options: { label:"Email Form", inputPlaceholder:"Enter you email", buttonText:"Send", showButton:true } }
+      }
+    ]
   }
 );
 
